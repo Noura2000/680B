@@ -1,0 +1,48 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int br=0,bl=0;
+    int a,n,arr[100],cnt=0,r=1,l=1;
+    cin>>n>>a;
+    for(int i=0;i<n;i++) cin>>arr[i];
+
+    a--;
+    if(arr[a]==1) cnt++;
+ 
+    if(n==1) cout<<cnt<<endl;
+    else
+    {
+    while(1)
+    {
+
+        if(a-l<0) bl=2;
+        else
+        {
+         if(arr[a-l]==1) bl=1;
+        else bl=0;
+
+         l++;}
+
+        if(a+r+1>n) br=2;
+        else
+        {
+        if(arr[a+r]==1) br=1;
+        else br=0;
+        r++;
+        }
+
+       
+        if(br==1&&bl==1) cnt+=2;
+        else if(br==1&&bl==2) cnt++;
+        else if(bl==1&&br==2) cnt++;
+
+        if(br==2&&bl==2) break;
+
+    }
+    cout<<cnt<<endl;
+    }
+    return 0;
+}
